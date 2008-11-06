@@ -20,7 +20,7 @@ CREATE TABLE tx_explanationbox_sections (
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
 	starttime int(11) DEFAULT '0' NOT NULL,
 	endtime int(11) DEFAULT '0' NOT NULL,
-	content_uid tinytext,
+	content_uid int(11) DEFAULT '0' NOT NULL,
 	title tinytext,
 	columns text,
 

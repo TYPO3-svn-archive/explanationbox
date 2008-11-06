@@ -6,11 +6,16 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="list_mode_1">Mode 1</label>
-			<label index="list_mode_2">Mode 2</label>
-			<label index="list_mode_3">Mode 3</label>
-			<label index="back">Back</label>
-			<label index="submit_button_label">Click here to submit value</label>
+			<label index="explanationbox.pi_flexform.sheet_data">Data</label>
+			<label index="explanationbox.pi_flexform.sections">Sections</label>
+			<label index="explanationbox.pi_flexform.sheet_lookAndFeel">Look and Feel</label>
+			<label index="explanationbox.pi_flexform.templateFile">File name of the HTML template:</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="explanationbox.pi_flexform.sheet_data">Daten</label>
+			<label index="explanationbox.pi_flexform.sections">Sektionen</label>
+			<label index="explanationbox.pi_flexform.sheet_lookAndFeel">Darstellung</label>
+			<label index="explanationbox.pi_flexform.templateFile">Dateiname des HTML-Templates:</label>
 		</languageKey>
 	</data>
 </T3locallang>
