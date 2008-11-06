@@ -63,9 +63,28 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->init($configuration);
 		$this->getTemplateCode();
 
+		$this->includeJavaScript();
+
 		$this->setMarker('content_id', $this->cObj->data['uid']);
 
 		return $this->pi_wrapInBaseClass($this->getSubpart('CONTAINER'));
+	}
+
+	/**
+	 * Includes the extension's JavaScript and Prototype into the page header.	 *
+	 */
+	private function includeJavaScript() {
+		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId]
+			= '<script type="text/javascript" ' .
+			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
+			'pi1/tx_explanationbox_pi1.js">' .
+			'</script>';
+
+		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId . '_prototype']
+			= '<script type="text/javascript" ' .
+			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
+			'pi1/contrib/prototype.js">' .
+			'</script>';
 	}
 }
 
