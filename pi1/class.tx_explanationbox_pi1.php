@@ -21,14 +21,8 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
- * Hint: use extdeveval to insert/update function index above.
- */
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
-
+require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 /**
  * Plugin 'Explanation box' for the 'explanationbox' extension.
@@ -38,29 +32,41 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @subpackage	tx_explanationbox
  */
 class tx_explanationbox_pi1 extends tslib_pibase {
-	var $prefixId      = 'tx_explanationbox_pi1';		// Same as class name
-	var $scriptRelPath = 'pi1/class.tx_explanationbox_pi1.php';	// Path to this script relative to the extension dir.
-	var $extKey        = 'explanationbox';	// The extension key.
-	var $pi_checkCHash = true;
-	
+	/**
+	 * @var string same as class name
+	 */
+	public $prefixId = 'tx_explanationbox_pi1';
+	/**
+	 * @var string path to this script relative to the extension directory
+	 */
+	public $scriptRelPath = 'pi1/class.tx_explanationbox_pi1.php';
+	/**
+	 * @var string the extension key
+	 */
+	public $extKey = 'explanationbox';
+	/**
+	 * @var boolean
+	 */
+	public $pi_checkCHash = true;
+
 	/**
 	 * The main method of the PlugIn
 	 *
-	 * @param	string		$content: The PlugIn content
-	 * @param	array		$conf: The PlugIn configuration
-	 * @return	The content that is displayed on the website
+	 * @param string (unused)
+	 * @param array the PlugIn configuration
+	 *
+	 * @return string the content that is displayed on the website
 	 */
-	function main($content, $conf) {
-		$this->conf = $conf;
+	public function main($content, $configuration) {
+		$this->conf = $configuration;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
-		
-	
+
 		$content='
 			<strong>This is a few paragraphs:</strong><br />
 			<p>This is line 1</p>
 			<p>This is line 2</p>
-	
+
 			<h3>This is a form:</h3>
 			<form action="'.$this->pi_getPageLink($GLOBALS['TSFE']->id).'" method="POST">
 				<input type="text" name="'.$this->prefixId.'[input_field]" value="'.htmlspecialchars($this->piVars['input_field']).'">
@@ -69,12 +75,10 @@ class tx_explanationbox_pi1 extends tslib_pibase {
 			<br />
 			<p>You can click here to '.$this->pi_linkToPage('get to this page again',$GLOBALS['TSFE']->id).'</p>
 		';
-	
+
 		return $this->pi_wrapInBaseClass($content);
 	}
 }
-
-
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/explanationbox/pi1/class.tx_explanationbox_pi1.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/explanationbox/pi1/class.tx_explanationbox_pi1.php']);

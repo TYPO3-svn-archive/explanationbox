@@ -8,15 +8,15 @@ $TCA['tx_explanationbox_sections'] = array (
 	),
 	'feInterface' => $TCA['tx_explanationbox_sections']['feInterface'],
 	'columns' => array (
-		'hidden' => array (		
+		'hidden' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
 			'config'  => array (
 				'type'    => 'check',
-				'default' => '0'
+				'default' => '0',
 			)
 		),
-		'starttime' => array (		
+		'starttime' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
 			'config'  => array (
@@ -25,10 +25,10 @@ $TCA['tx_explanationbox_sections'] = array (
 				'max'      => '20',
 				'eval'     => 'date',
 				'default'  => '0',
-				'checkbox' => '0'
+				'checkbox' => '0',
 			)
 		),
-		'endtime' => array (		
+		'endtime' => array (
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
 			'config'  => array (
@@ -40,36 +40,36 @@ $TCA['tx_explanationbox_sections'] = array (
 				'default'  => '0',
 				'range'    => array (
 					'upper' => mktime(3, 14, 7, 1, 19, 2038),
-					'lower' => mktime(0, 0, 0, date('m')-1, date('d'), date('Y'))
+					'lower' => mktime(0, 0, 0, date('m')-1, date('d'), date('Y')),
 				)
 			)
 		),
-		'content_uid' => array (		
-			'exclude' => 0,		
-			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.content_uid',		
+		'content_uid' => array (
+			'exclude' => 0,
+			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.content_uid',
 			'config' => array (
-				'type' => 'input',	
-				'size' => '30',	
+				'type' => 'input',
+				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'title' => array (		
-			'exclude' => 0,		
-			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.title',		
+		'title' => array (
+			'exclude' => 0,
+			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.title',
 			'config' => array (
-				'type' => 'input',	
-				'size' => '30',	
+				'type' => 'input',
+				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'columns' => array (		
-			'exclude' => 0,		
-			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.columns',		
+		'columns' => array (
+			'exclude' => 0,
+			'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections.columns',
 			'config' => array (
-				'type' => 'group',	
-				'internal_type' => 'db',	
-				'allowed' => 'tt_content',	
-				'size' => 2,	
+				'type' => 'group',
+				'internal_type' => 'db',
+				'allowed' => 'tt_content',
+				'size' => 2,
 				'minitems' => 0,
 				'maxitems' => 1,
 			)

@@ -6,7 +6,6 @@ CREATE TABLE tt_content (
 );
 
 
-
 #
 # Table structure for table 'tx_explanationbox_sections'
 #
@@ -24,7 +23,7 @@ CREATE TABLE tx_explanationbox_sections (
 	content_uid tinytext,
 	title tinytext,
 	columns text,
-	
+
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
