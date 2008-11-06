@@ -2,6 +2,9 @@
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
+
+include_once(t3lib_extMgm::extPath('explanationbox') . 'class.tx_explanationbox_tca.php');
+
 $tempColumns = array(
 	'tx_explanationbox_sections' => array(
 		'exclude' => 0,
@@ -27,11 +30,19 @@ t3lib_div::loadTCA('tt_content');
 t3lib_extMgm::addTCAcolumns('tt_content', $tempColumns, 1);
 t3lib_extMgm::allowTableOnStandardPages('tx_explanationbox_sections');
 
+// Creates a new colPos value 255 for all inline content elements and makes sure
+// that new inline elements get saved there.
+$TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
+	= 'LLL:EXT:explanationbox/locallang_db.xml:tt_content.colPos.255';
+$TCA['tt_content']['columns']['colPos']['config']['items']['255']['1'] = '255';
+$TCA['tt_content']['columns']['colPos']['config']['itemsProcFunc']
+	= 'tx_explanationbox_tca->setInlineElementColumn';
+
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
 	= 'CType, header, tx_explanationbox_sections';
 
-$TCA['tx_explanationbox_sections'] = array (
-	'ctrl' => array (
+$TCA['tx_explanationbox_sections'] = array(
+	'ctrl' => array(
 		'title'     => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections',
 		'label'     => 'title',
 		'tstamp'    => 'tstamp',
