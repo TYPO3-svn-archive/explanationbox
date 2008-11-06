@@ -1,0 +1,8 @@
+plugin.tx_explanationbox_pi1 {
+	# location of the HTML template file
+	templateFile = EXT:explanationbox/pi1/tx_explanationbox_pi1.html
+}
+
+page.includeCSS {
+	tx_explanationbox_pi1 = {$plugin.tx_explanationbox_pi1.cssFile}
+}
