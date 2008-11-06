@@ -22,6 +22,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+require_once(t3lib_extMgm::extPath('oelib') . 'tx_oelib_commonConstants.php');
 require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_db.php');
 require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_templatehelper.php');
 
@@ -52,6 +53,11 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	public $pi_checkCHash = true;
 
 	/**
+	 * @var string the table name of the sections table
+	 */
+	const TABLE_SECTIONS = 'tx_explanationbox_sections';
+
+	/**
 	 * Creates the explanation box HTML.
 	 *
 	 * @param string (unused)
@@ -62,10 +68,9 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	public function main($content, $configuration) {
 		$this->init($configuration);
 		$this->getTemplateCode();
-
 		$this->includeJavaScript();
 
-		$this->setMarker('content_id', $this->cObj->data['uid']);
+		$this->setMarker('content_id', $this->getContentUid());
 
 		return $this->pi_wrapInBaseClass($this->getSubpart('CONTAINER'));
 	}
@@ -85,6 +90,45 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
 			'pi1/contrib/prototype.js">' .
 			'</script>';
+	}
+
+	/**
+	 * Returns the UID of the current content element.
+	 *
+	 * @return integer UID of the current content element, will be > 0
+	 */
+	private function getContentUid() {
+		return $this->cObj->data['uid'];
+	}
+
+	/**
+	 * Gets the data of the sections that are set in the current content
+	 * element.
+	 *
+	 * @return array nested array with the data of the sections in the current
+	 *               content element, will usually not be empty except for
+	 *               broken data in the DB
+	 */
+	private function getSections() {
+		$result = array();
+
+		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'*',
+			self::TABLE_SECTIONS,
+			'content_uid  = ' . $this->getContentUid() .
+				tx_oelib_db::enableFields(self::TABLE_SECTIONS),
+			'',
+			'sorting'
+		);
+		if (!$dbResult) {
+			throw new Exception(DATABASE_QUERY_ERROR);
+		}
+
+		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
+			$result[] = $row;
+		}
+
+		return $result;
 	}
 }
 
