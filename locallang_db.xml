@@ -6,21 +6,19 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="tt_content.tx_explanationbox_section_uid">Section UID</label>
+			<label index="tt_content.tx_explanationbox_sections">Sections (tabs)</label>
 			<label index="tx_explanationbox_sections">Sections</label>
-			<label index="tx_explanationbox_sections.content_uid">Content UID</label>
 			<label index="tx_explanationbox_sections.title">Title</label>
 			<label index="tx_explanationbox_sections.columns">Columns</label>
-			<label index="tt_content.list_type_pi1">Explanation box</label>
+			<label index="tt_content.CType_pi1">Explanation box</label>
 			<label index="tt_content.colPos.255">Inline elements</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="tt_content.tx_explanationbox_section_uid">Sektions-UID</label>
+			<label index="tt_content.tx_explanationbox_sections">Sektionen (Tabs)</label>
 			<label index="tx_explanationbox_sections">Sektionen</label>
-			<label index="tx_explanationbox_sections.content_uid">Content-UID</label>
 			<label index="tx_explanationbox_sections.title">Titel</label>
 			<label index="tx_explanationbox_sections.columns">Spalten</label>
-			<label index="tt_content.list_type_pi1">Erklärungsbox</label>
+			<label index="tt_content.CType_pi1">Erklärungsbox</label>
 			<label index="tt_content.colPos.255">Inline-Elemente</label>
 		</languageKey>
 	</data>

@@ -3,6 +3,7 @@
 #
 CREATE TABLE tt_content (
 	tx_explanationbox_section_uid int(11) DEFAULT '0' NOT NULL
+	tx_explanationbox_sections tinytext,
 );
 
 
@@ -17,12 +18,9 @@ CREATE TABLE tx_explanationbox_sections (
 	cruser_id int(11) DEFAULT '0' NOT NULL,
 	sorting int(10) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
-	starttime int(11) DEFAULT '0' NOT NULL,
-	endtime int(11) DEFAULT '0' NOT NULL,
 	content_uid int(11) DEFAULT '0' NOT NULL,
 	title tinytext,
-	columns text,
+	columns tinytext,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
