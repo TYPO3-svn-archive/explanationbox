@@ -13,7 +13,7 @@ $tempColumns = array(
 			'type' => 'inline',
 			'foreign_table' => 'tx_explanationbox_sections',
 			'foreign_field' => 'content_uid',
-			'foreign_default_sortby' => 'sorting',
+			'foreign_sortby' => 'sorting',
 			'size' => 6,
 			'minitems' => 1,
 			'maxitems' => 6,
@@ -43,10 +43,10 @@ $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
 
 $TCA['tx_explanationbox_sections'] = array(
 	'ctrl' => array(
-		'title'     => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections',
-		'label'     => 'title',
-		'tstamp'    => 'tstamp',
-		'crdate'    => 'crdate',
+		'title' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_sections',
+		'label' => 'title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'sortby' => 'sorting',
 		'delete' => 'deleted',

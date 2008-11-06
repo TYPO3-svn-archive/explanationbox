@@ -27,7 +27,7 @@ $TCA['tx_explanationbox_sections'] = array(
 				'internal_type' => 'db',
 				'foreign_table' => 'tt_content',
 				'foreign_field' => 'tx_explanationbox_section_uid',
-				'foreign_default_sortby' => 'sorting',
+				'foreign_sortby' => 'sorting',
 				'minitems' => 1,
 				'maxitems' => 2,
 				'appearance' => array(
@@ -39,7 +39,7 @@ $TCA['tx_explanationbox_sections'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'title;;;;2-2-2, columns;;;;3-3-3')
+		'0' => array('showitem' => 'title, columns')
 	),
 );
 ?>
