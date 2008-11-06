@@ -22,16 +22,18 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(PATH_tslib . 'class.tslib_pibase.php');
+require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_db.php');
+require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_templatehelper.php');
 
 /**
- * Plugin 'Explanation box' for the 'explanationbox' extension.
+ * Content type 'Explanation box' for the 'explanationbox' extension.
  *
  * @author	Oliver Klee <typo3-coding@oliverklee.de>
+ *
  * @package	TYPO3
  * @subpackage	tx_explanationbox
  */
-class tx_explanationbox_pi1 extends tslib_pibase {
+class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	/**
 	 * @var string same as class name
 	 */
@@ -45,24 +47,22 @@ class tx_explanationbox_pi1 extends tslib_pibase {
 	 */
 	public $extKey = 'explanationbox';
 	/**
-	 * @var boolean
+	 * @var boolean whether this extension can be cashed
 	 */
 	public $pi_checkCHash = true;
 
 	/**
-	 * The main method of the PlugIn
+	 * Creates the explanation box HTML.
 	 *
 	 * @param string (unused)
-	 * @param array the PlugIn configuration
+	 * @param array TypoScript configuration for the plugin
 	 *
-	 * @return string the content that is displayed on the website
+	 * @return string HTML for the plugin
 	 */
 	public function main($content, $configuration) {
-		$this->conf = $configuration;
-		$this->pi_setPiVarDefaults();
-		$this->pi_loadLL();
+		$this->init($configuration);
 
-		$content='
+		$content = '
 			<strong>This is a few paragraphs:</strong><br />
 			<p>This is line 1</p>
 			<p>This is line 2</p>
@@ -80,7 +80,7 @@ class tx_explanationbox_pi1 extends tslib_pibase {
 	}
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/explanationbox/pi1/class.tx_explanationbox_pi1.php'])	{
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/explanationbox/pi1/class.tx_explanationbox_pi1.php']) {
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/explanationbox/pi1/class.tx_explanationbox_pi1.php']);
 }
 ?>
