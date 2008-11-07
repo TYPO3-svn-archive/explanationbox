@@ -149,7 +149,11 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$headings = array();
 		$separator = $this->getSubpart('HEADING_SEPARATOR');
 
-		foreach ($this->sections as $section) {
+		foreach ($this->sections as $key => $section) {
+			$class = ($key == 0) ? 'active' : 'inactive';
+
+			$this->setMarker('class_heading', $class);
+			$this->setMarker('heading_number', $key);
 			$this->setMarker('heading', htmlspecialchars($section['title']));
 			$headings[] = $this->getSubpart('SINGLE_HEADING');
 		}
@@ -208,6 +212,9 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 					$renderedColumns = $this->renderTwoColumns($columns);
 					break;
 			}
+			$class = ($key == 0) ? 'active' : 'inactive';
+
+			$this->setMarker('class_section', $class);
 			$this->setMarker('section_number', $key);
 			$this->setMarker('section_columns', $renderedColumns);
 

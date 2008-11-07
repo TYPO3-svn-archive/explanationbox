@@ -1,13 +1,19 @@
 .tx-explanationbox-pi1 .box-heading {
 	position: relative;
-	width: 800px;
+	width: 635px;
 	margin: 0;
 	padding: 10px;
-	border: 1px solid #777;
+	border: 1px solid #eee;
 }
 
-.tx-explanationbox-pi1 .box-heading h3 {
-	display: inline;
+.tx-explanationbox-pi1 .box-heading .active {
+	cursor: default;
+	color: #032359;
+}
+
+.tx-explanationbox-pi1 .box-heading .inactive {
+	cursor: pointer;
+	color: #5f5f5f;
 }
 
 .tx-explanationbox-pi1 .box-heading .section-navigation {
@@ -16,13 +22,29 @@
 	right: 10px;
 }
 
-.tx-explanationbox-pi1 .box-content .section {
+.tx-explanationbox-pi1 .box-heading .section-navigation img {
+	cursor: pointer;
+}
+
+.tx-explanationbox-pi1 .box-content {
 	position: relative;
-	width: 800px;
+	width: 657px;
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+
+.tx-explanationbox-pi1 .box-content .section {
 	margin: 0;
 	padding: 10px;
-	background: #ddd;
-	border-bottom: 1px solid #777;
+}
+
+.tx-explanationbox-pi1 .box-content .active {
+	visibility: visible;
+}
+
+.tx-explanationbox-pi1 .box-content .inactive {
+	visibility: hidden;
 }
 
 .tx-explanationbox-pi1 .box-content .one-column {

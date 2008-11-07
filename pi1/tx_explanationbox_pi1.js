@@ -20,3 +20,22 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+
+/**
+ * Shows a tab and hides all other siblings. In addition, the section counter
+ * and the back/forward arrows are updated.
+ *
+ * @param string the ID of the parent of the tab contents
+ * @param the number of the tab to show, zero-based
+ */
+function showTab(parentId, tabNumber) {
+	$(parentId).getElements(".toggle").removeClass("active");
+	$(parentId).getElements(".toggle").addClass("inactive");
+
+	$(parentId).getElements(".toggle-" + tabNumber).removeClass("inactive");
+	$(parentId).getElements(".toggle-" + tabNumber).addClass("active");
+
+	var newNumber = document.createTextNode(tabNumber + 1);
+	var numberDisplay = $(parentId).getElement(".section-number");
+	numberDisplay.replaceChild(newNumber, numberDisplay.childNodes[0]);
+}

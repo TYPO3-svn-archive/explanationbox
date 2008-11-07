@@ -18,25 +18,31 @@
 
 <h2>Container</h2>
 <!-- ###CONTAINER### -->
-<div class="box-heading">
-<!-- ###SECTION_HEADINGS### -->
-<!-- ###SINGLE_HEADING### -->
-<h3>###HEADING###</h3>
-<!-- ###SINGLE_HEADING### -->
-<!-- ###HEADING_SEPARATOR### --><img src="/typo3conf/ext/explanationbox/pi1/images/pipe_grey.gif" alt="|" /><!-- ###HEADING_SEPARATOR### -->
-<!-- ###SECTION_HEADINGS### -->
-	<div class="section-navigation">
-		<img src="/typo3conf/ext/explanationbox/pi1/images/pfeil_link_left.gif" alt="&lt;" />
-		1/###NUMBER_OF_SECTIONS###
-		<img src="/typo3conf/ext/explanationbox/pi1/images/pfeil_link.gif" alt="&gt;" />
+<div id="box-###CONTENT_ID###" class="box">
+	<div class="box-heading">
+		<!-- ###SECTION_HEADINGS### -->
+		<!-- ###SINGLE_HEADING### -->
+		<span class="toggle heading ###CLASS_HEADING### toggle-###HEADING_NUMBER###" onclick="showTab('box-###CONTENT_ID###', ###HEADING_NUMBER###);">
+			###HEADING###
+		</span>
+		<!-- ###SINGLE_HEADING### -->
+		<!-- ###HEADING_SEPARATOR### -->
+			<img src="/typo3conf/ext/explanationbox/pi1/images/pipe_grey.gif" alt="|" />
+		<!-- ###HEADING_SEPARATOR### -->
+		<!-- ###SECTION_HEADINGS### -->
+		<div class="section-navigation">
+			<img src="/typo3conf/ext/explanationbox/pi1/images/pfeil_link_left.gif" alt="&lt;" />
+			<span class="section-number">1</span>/###NUMBER_OF_SECTIONS###
+			<img src="/typo3conf/ext/explanationbox/pi1/images/pfeil_link.gif" alt="&gt;" />
+		</div>
 	</div>
-</div>
-<div class="box-content">
-<!-- ###SECTION_BODY### -->
-	<div class="section" id="box-###CONTENT_ID###-###SECTION_NUMBER###">
-	###SECTION_COLUMNS###
+	<div class="box-content">
+		<!-- ###SECTION_BODY### -->
+		<div class="section toggle ###CLASS_SECTION### toggle-###SECTION_NUMBER###">
+		###SECTION_COLUMNS###
+		</div>
+		<!-- ###SECTION_BODY### -->
 	</div>
-<!-- ###SECTION_BODY### -->
 </div>
 <!-- ###CONTAINER### -->
 
