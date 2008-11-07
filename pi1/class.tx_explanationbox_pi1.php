@@ -90,7 +90,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	}
 
 	/**
-	 * Includes the extension's JavaScript and Prototype into the page header.	 *
+	 * Includes the extension's JavaScript and MooTools into the page header.
 	 */
 	private function includeJavaScript() {
 		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId]
@@ -102,7 +102,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId . '_prototype']
 			= '<script type="text/javascript" ' .
 			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
-			'pi1/contrib/prototype.js">' .
+			'pi1/contrib/mootools-1.2.1-core-yc.js">' .
 			'</script>';
 	}
 
