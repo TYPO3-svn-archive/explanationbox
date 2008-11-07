@@ -158,6 +158,12 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 			$headings[] = $this->getSubpart('SINGLE_HEADING');
 		}
 
+		if (count($this->sections) > 1) {
+			$this->setMarker('class_rightarrow', 'active');
+		} else {
+			$this->setMarker('class_rightarrow', 'inactive');
+		}
+
 		$this->setMarker('number_of_sections', count($this->sections));
 		$this->setSubpart('SECTION_HEADINGS', implode($separator, $headings));
 	}
