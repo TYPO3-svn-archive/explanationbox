@@ -29,6 +29,8 @@
  * @param the number of the tab to show, zero-based
  */
 function showTab(parentId, tabNumber) {
+	activeExplanationSections[parentId] = tabNumber;
+
 	$(parentId).getElements(".toggle").removeClass("active");
 	$(parentId).getElements(".toggle").addClass("inactive");
 
@@ -39,3 +41,32 @@ function showTab(parentId, tabNumber) {
 	var numberDisplay = $(parentId).getElement(".section-number");
 	numberDisplay.replaceChild(newNumber, numberDisplay.childNodes[0]);
 }
+
+/**
+ * Switches to one tab to the left.
+ *
+ * @param string the ID of the parent of the tab contents
+ */
+function tabLeft(parentId) {
+	if (activeExplanationSections[parentId]) {
+		showTab(parentId, activeExplanationSections[parentId] - 1);
+	}
+}
+
+/**
+ * Switches to one tab to the right.
+ *
+ * @param string the ID of the parent of the tab contents
+ * @param integer the (zero-based) number of the highest tab
+ */
+function tabRight(parentId, maxTab) {
+	var activeTabNumber = 0;
+	if (activeExplanationSections[parentId] != null) {
+		activeTabNumber = activeExplanationSections[parentId];
+	}
+	if (activeTabNumber + 1 < maxTab) {
+		showTab(parentId, activeTabNumber + 1);
+	}
+}
+
+activeExplanationSections = new Object();
