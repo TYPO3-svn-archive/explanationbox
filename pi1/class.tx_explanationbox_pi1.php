@@ -77,6 +77,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->setMarker('content_id', $this->getContentUid());
 
 		$this->retrieveSections();
+		$this->renderSectionHeadings();
 
 		return $this->pi_wrapInBaseClass($this->getSubpart('CONTAINER'));
 	}
@@ -129,6 +130,22 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
 			$this->sections[] = $row;
 		}
+	}
+
+	/**
+	 * Renders the sections headings and writes the result into the
+	 * corresponding subpart.
+	 */
+	private function renderSectionHeadings() {
+		$headings = array();
+		$separator = $this->getSubpart('HEADING_SEPARATOR');
+
+		foreach ($this->sections as $section) {
+			$this->setMarker('heading', htmlspecialchars($section['title']));
+			$headings[] = $this->getSubpart('SINGLE_HEADING');
+		}
+
+		$this->setSubpart('SECTION_HEADINGS', implode($separator, $headings));
 	}
 }
 
