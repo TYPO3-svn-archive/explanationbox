@@ -152,6 +152,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 			$headings[] = $this->getSubpart('SINGLE_HEADING');
 		}
 
+		$this->setMarker('number_of_sections', count($this->sections));
 		$this->setSubpart('SECTION_HEADINGS', implode($separator, $headings));
 	}
 
@@ -191,7 +192,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	private function renderSections() {
 		$result = '';
 
-		foreach ($this->sections as $section) {
+		foreach ($this->sections as $key => $section) {
 			$columns = $this->retrieveColumns($section['uid']);
 
 			switch (count($columns)) {
@@ -205,6 +206,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 					$renderedColumns = $this->renderTwoColumns($columns);
 					break;
 			}
+			$this->setMarker('section_number', $key);
 			$this->setMarker('section_columns', $renderedColumns);
 
 			$result .= $this->getSubpart('SECTION_BODY');
