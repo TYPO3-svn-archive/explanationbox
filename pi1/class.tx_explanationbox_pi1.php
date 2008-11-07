@@ -99,11 +99,13 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 			'pi1/tx_explanationbox_pi1.js">' .
 			'</script>';
 
-		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId . '_prototype']
-			= '<script type="text/javascript" ' .
-			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
-			'pi1/contrib/mootools-1.2.1-core-yc.js">' .
-			'</script>';
+		if ($this->hasConfValueString('mooTools')) {
+			$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId . '_moo']
+				= '<script type="text/javascript" ' .
+				'src="' . t3lib_extMgm::extRelPath($this->extKey) .
+				$this->getConfValueString('mooTools') . '">' .
+				'</script>';
+		}
 	}
 
 	/**
