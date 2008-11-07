@@ -22,6 +22,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+require_once(PATH_typo3 . 'sysext/cms/tslib/class.tslib_content.php');
+
 require_once(t3lib_extMgm::extPath('oelib') . 'tx_oelib_commonConstants.php');
 require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_db.php');
 require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_templatehelper.php');
@@ -39,6 +41,10 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	 * @var string the table name of the sections table
 	 */
 	const TABLE_SECTIONS = 'tx_explanationbox_sections';
+	/**
+	 * @var string the table name of the columns table
+	 */
+	const TABLE_COLUMNS = 'tt_content';
 	/**
 	 * @var string same as class name
 	 */
@@ -78,6 +84,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 
 		$this->retrieveSections();
 		$this->renderSectionHeadings();
+		$this->renderSections();
 
 		return $this->pi_wrapInBaseClass($this->getSubpart('CONTAINER'));
 	}
@@ -133,7 +140,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	}
 
 	/**
-	 * Renders the sections headings and writes the result into the
+	 * Renders the section headings and writes the result into the
 	 * corresponding subpart.
 	 */
 	private function renderSectionHeadings() {
@@ -146,6 +153,114 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		}
 
 		$this->setSubpart('SECTION_HEADINGS', implode($separator, $headings));
+	}
+
+	/**
+	 * Retrieves the columns related to the section with the UID $sectionUid.
+	 *
+	 * @param integer the UID of an existing section, must be > 0
+	 *
+	 * @return array all columns (content elements) related to that section,
+	 *               may be empty
+	 */
+	private function retrieveColumns($sectionUid) {
+		$result = array();
+
+		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'uid',
+			self::TABLE_COLUMNS,
+			'tx_explanationbox_section_uid  = ' . $sectionUid .
+				tx_oelib_db::enableFields(self::TABLE_COLUMNS),
+			'',
+			'sorting'
+		);
+		if (!$dbResult) {
+			throw new Exception(DATABASE_QUERY_ERROR);
+		}
+
+		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Renders the sectionsand writes the result into the corresponding subpart.
+	 */
+	private function renderSections() {
+		$result = '';
+
+		foreach ($this->sections as $section) {
+			$columns = $this->retrieveColumns($section['uid']);
+
+			switch (count($columns)) {
+				case 0:
+					$renderedColumns = '';
+					break;
+				case 1:
+					$renderedColumns = $this->renderOneColumn($columns[0]);
+					break;
+				default:
+					$renderedColumns = $this->renderTwoColumns($columns);
+					break;
+			}
+			$this->setMarker('section_columns', $renderedColumns);
+
+			$result .= $this->getSubpart('SECTION_BODY');
+		}
+
+		$this->setSubpart('SECTION_BODY', $result);
+	}
+
+	/**
+	 * Renders a single column and wraps it in some HTML.
+	 *
+	 * @param array the data of the single column to render
+	 *
+	 * @return string the rendered and wrapped column, will not be empty
+	 */
+	private function renderOneColumn(array $columnData) {
+		$this->setMarker('column_content', $this->renderRawColumn($columnData));
+
+		return $this->getSubpart('ONE_COLUMN');
+	}
+
+	/**
+	 * Renders two columns and wraps them in some HTML.
+	 *
+	 * Any additional columns past the first two will be ignored.
+	 *
+	 * @param array the data of the boths columns to render as a nested array
+	 *
+	 * @return string the rendered and wrapped columns, will not be empty
+	 */
+	private function renderTwoColumns(array $columnData) {
+		$this->setMarker(
+			'column_content_1', $this->renderRawColumn($columnData[0])
+		);
+		$this->setMarker(
+			'column_content_2', $this->renderRawColumn($columnData[1])
+		);
+
+		return $this->getSubpart('TWO_COLUMNS');
+	}
+
+	/**
+	 * Renders a single column.
+	 *
+	 * @param array the data of the column to render, must not be empty
+	 *
+	 * @return the rendered column, might be empty
+	 */
+	private function renderRawColumn(array $columnData) {
+		$configuration = array(
+			'tables' => self::TABLE_COLUMNS,
+			'source' => $columnData['uid'],
+			'dontCheckPid' => 1,
+		);
+
+		return $this->cObj->RECORDS($configuration);
 	}
 }
 
