@@ -27,8 +27,9 @@
  *
  * @param string the ID of the parent of the tab contents
  * @param the number of the tab to show, zero-based
+ * @param integer the (zero-based) number of the highest tab
  */
-function showTab(parentId, tabNumber) {
+function showTab(parentId, tabNumber, maxTab) {
 	activeExplanationSections[parentId] = tabNumber;
 
 	$(parentId).getElements(".toggle").removeClass("active");
@@ -40,16 +41,32 @@ function showTab(parentId, tabNumber) {
 	var newNumber = document.createTextNode(tabNumber + 1);
 	var numberDisplay = $(parentId).getElement(".section-number");
 	numberDisplay.replaceChild(newNumber, numberDisplay.childNodes[0]);
+
+	if (tabNumber > 0) {
+		$(parentId).getElement(".arrow-left").removeClass("inactive");
+		$(parentId).getElement(".arrow-left").addClass("active");
+	} else {
+		$(parentId).getElement(".arrow-left").removeClass("active");
+		$(parentId).getElement(".arrow-left").addClass("inactive");
+	}
+	if (tabNumber + 1 < maxTab) {
+		$(parentId).getElement(".arrow-right").removeClass("inactive");
+		$(parentId).getElement(".arrow-right").addClass("active");
+	} else {
+		$(parentId).getElement(".arrow-right").removeClass("active");
+		$(parentId).getElement(".arrow-right").addClass("inactive");
+	}
 }
 
 /**
  * Switches to one tab to the left.
  *
  * @param string the ID of the parent of the tab contents
+ * @param integer the (zero-based) number of the highest tab
  */
-function tabLeft(parentId) {
+function tabLeft(parentId, maxTab) {
 	if (activeExplanationSections[parentId]) {
-		showTab(parentId, activeExplanationSections[parentId] - 1);
+		showTab(parentId, activeExplanationSections[parentId] - 1, maxTab);
 	}
 }
 
@@ -65,7 +82,7 @@ function tabRight(parentId, maxTab) {
 		activeTabNumber = activeExplanationSections[parentId];
 	}
 	if (activeTabNumber + 1 < maxTab) {
-		showTab(parentId, activeTabNumber + 1);
+		showTab(parentId, activeTabNumber + 1, maxTab);
 	}
 }
 

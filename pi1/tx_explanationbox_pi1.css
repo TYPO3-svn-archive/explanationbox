@@ -22,8 +22,13 @@
 	right: 10px;
 }
 
-.tx-explanationbox-pi1 .box-heading .section-navigation img {
+.tx-explanationbox-pi1 .box-heading .section-navigation img.active {
 	cursor: pointer;
+	visibility: visible;
+}
+
+.tx-explanationbox-pi1 .box-heading .section-navigation img.inactive {
+	visibility: hidden;
 }
 
 .tx-explanationbox-pi1 .box-content {
