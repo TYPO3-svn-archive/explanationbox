@@ -36,6 +36,10 @@ require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_templatehelper.php
  */
 class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	/**
+	 * @var string the table name of the sections table
+	 */
+	const TABLE_SECTIONS = 'tx_explanationbox_sections';
+	/**
 	 * @var string same as class name
 	 */
 	public $prefixId = 'tx_explanationbox_pi1';
@@ -53,9 +57,9 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	public $pi_checkCHash = true;
 
 	/**
-	 * @var string the table name of the sections table
+	 * @var array the data of the sections from the DB
 	 */
-	const TABLE_SECTIONS = 'tx_explanationbox_sections';
+	private $sections = array();
 
 	/**
 	 * Creates the explanation box HTML.
@@ -71,6 +75,8 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->includeJavaScript();
 
 		$this->setMarker('content_id', $this->getContentUid());
+
+		$this->retrieveSections();
 
 		return $this->pi_wrapInBaseClass($this->getSubpart('CONTAINER'));
 	}
@@ -103,14 +109,10 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 
 	/**
 	 * Gets the data of the sections that are set in the current content
-	 * element.
-	 *
-	 * @return array nested array with the data of the sections in the current
-	 *               content element, will usually not be empty except for
-	 *               broken data in the DB
+	 * element and stores them in $this->sections.
 	 */
-	private function getSections() {
-		$result = array();
+	private function retrieveSections() {
+		$this->sections = array();
 
 		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'*',
@@ -125,10 +127,8 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		}
 
 		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
-			$result[] = $row;
+			$this->sections[] = $row;
 		}
-
-		return $result;
 	}
 }
 
