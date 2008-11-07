@@ -1,3 +1,45 @@
+.tx-explanationbox-pi1 .box-heading {
+	position: relative;
+	width: 800px;
+	margin: 0;
+	padding: 10px;
+	border: 1px solid #777;
+}
+
 .tx-explanationbox-pi1 .box-heading h3 {
 	display: inline;
+}
+
+.tx-explanationbox-pi1 .box-heading .section-navigation {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.tx-explanationbox-pi1 .box-content .section {
+	position: relative;
+	width: 800px;
+	margin: 0;
+	padding: 10px;
+	background: #ddd;
+	border-bottom: 1px solid #777;
+}
+
+.tx-explanationbox-pi1 .box-content .one-column {
+	width: 100%;
+}
+
+.tx-explanationbox-pi1 .box-content .two-columns {
+	width: 50%;
+	position: absolute;
+	top: 0;
+}
+
+.tx-explanationbox-pi1 .box-content .two-columns .column-1 {
+	left: 0;
+	border-right: 1px solid #000;
+}
+
+.tx-explanationbox-pi1 .box-content .two-columns .column-2 {
+	right: 0;
 }
