@@ -1,3 +1,8 @@
+.tx-explanationbox-pi1 .clear {
+	clear: both;
+	height: 1px;
+}
+
 .tx-explanationbox-pi1 .box-heading {
 	position: relative;
 	width: 635px;
@@ -49,28 +54,26 @@
 }
 
 .tx-explanationbox-pi1 .box-content .active {
-	visibility: visible;
+	display: block;
 }
 
 .tx-explanationbox-pi1 .box-content .inactive {
-	visibility: hidden;
+	display: none;
 }
 
 .tx-explanationbox-pi1 .box-content .one-column {
 	width: 100%;
 }
 
-.tx-explanationbox-pi1 .box-content .two-columns {
-	width: 50%;
-	position: absolute;
-	top: 0;
+.tx-explanationbox-pi1 .box-content .two-columns .column-1,
+.tx-explanationbox-pi1 .box-content .two-columns .column-2 {
+	width: 48%;
 }
 
 .tx-explanationbox-pi1 .box-content .two-columns .column-1 {
-	left: 0;
-	border-right: 1px solid #000;
+	float: left;
 }
 
 .tx-explanationbox-pi1 .box-content .two-columns .column-2 {
-	right: 0;
+	float: right;
 }
