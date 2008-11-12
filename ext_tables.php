@@ -35,8 +35,6 @@ t3lib_extMgm::allowTableOnStandardPages('tx_explanationbox_sections');
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
 	= 'LLL:EXT:explanationbox/locallang_db.xml:tt_content.colPos.255';
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['1'] = '255';
-$TCA['tt_content']['columns']['colPos']['config']['itemsProcFunc']
-	= 'tx_explanationbox_tca->setInlineElementColumn';
 
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
 	= 'CType, header, tx_explanationbox_sections';
@@ -63,5 +61,4 @@ t3lib_extMgm::addPlugin(array(
 ),'CType');
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'configuration/', 'Explanation box');
-
 ?>

@@ -23,31 +23,23 @@
 ***************************************************************/
 
 /**
- * This class provides some TCA preprocessing.
+ * This class provides some TCA postprocessing.
  *
  * @author	Oliver Klee <typo3-coding@oliverklee.de>
  * @package	TYPO3
+ *
  * @subpackage	tx_explanationbox
  */
 class tx_explanationbox_tca {
 	/**
-	 * Ensures that a content element is moved to the "inline elements" column
-	 * if it is part of a explanation box section.
-	 *
-	 * @param array the content element data
-	 *
-	 * @return array the modified content element data
+	 * Handles data after everything had been written to the database.
 	 */
-	public function setInlineElementColumn(array $elementData) {
-		if ($elementData['row']['tx_explanationbox_section_uid']) {
-			foreach($elementData['items'] as $itemKey => $itemArray) {
-				if ($itemArray[1] != 255) {
-					unset($elementData['items'][$itemKey]);
-				}
-			}
-		}
-
-		return $elementData;
+	public function processDatamap_afterAllOperations() {
+		// Removes all place relations of the current event.
+		$GLOBALS['TYPO3_DB']->sql_query(
+			'UPDATE tt_content SET colPos = 255 ' .
+				'WHERE tx_explanationbox_section_uid > 0;'
+		);
 	}
 }
 
