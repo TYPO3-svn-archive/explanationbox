@@ -38,6 +38,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'oelib' => '0.4.3-',
 		),
 		'conflicts' => array(
+			'icebox' => '',
 		),
 		'suggests' => array(
 		),
