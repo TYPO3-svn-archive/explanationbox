@@ -80,7 +80,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->getTemplateCode();
 		$this->includeJavaScript();
 
-		$this->setMarker('content_id', $this->getContentUid());
+		$this->renderContentHeading();
 
 		$this->retrieveSections();
 		$this->renderSectionHeadings();
@@ -109,6 +109,17 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	}
 
 	/**
+	 * Renders the content heading and the content UID.
+	 */
+	private function renderContentHeading() {
+		$this->setMarker('content_id', $this->getContentUid());
+		$this->setMarker(
+			'content_heading',
+			htmlspecialchars($this->cObj->data['header'])
+		);
+	}
+
+	/**
 	 * Returns the UID of the current content element.
 	 *
 	 * @return integer UID of the current content element, will be > 0
@@ -116,6 +127,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	private function getContentUid() {
 		return $this->cObj->data['uid'];
 	}
+
 
 	/**
 	 * Gets the data of the sections that are set in the current content

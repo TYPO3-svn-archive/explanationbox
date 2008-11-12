@@ -22,21 +22,25 @@
 }
 
 .tx-explanationbox-pi1 .box-heading .section-navigation {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+	position: relative;
 }
 
-.tx-explanationbox-pi1 .box-heading .section-navigation img {
+.tx-explanationbox-pi1 .box-heading .page-browser {
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+}
+
+.tx-explanationbox-pi1 .box-heading .page-browser img {
 	padding: 2px;
 }
 
-.tx-explanationbox-pi1 .box-heading .section-navigation img.active {
+.tx-explanationbox-pi1 .box-heading .page-browser img.active {
 	cursor: pointer;
 	visibility: visible;
 }
 
-.tx-explanationbox-pi1 .box-heading .section-navigation img.inactive {
+.tx-explanationbox-pi1 .box-heading .page-browser img.inactive {
 	visibility: hidden;
 }
 
