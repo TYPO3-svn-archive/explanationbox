@@ -25,22 +25,22 @@
 	position: relative;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser {
 	position: absolute;
 	right: 10px;
 	bottom: 0;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser img {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser img {
 	padding: 2px;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser img.tx-explanationbox-pi1-active {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser img.tx-explanationbox-pi1-active {
 	cursor: pointer;
 	visibility: visible;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser img.tx-explanationbox-pi1-inactive {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser img.tx-explanationbox-pi1-inactive {
 	visibility: hidden;
 }
 
