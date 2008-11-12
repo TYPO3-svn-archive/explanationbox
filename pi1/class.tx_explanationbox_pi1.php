@@ -80,6 +80,11 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->getTemplateCode();
 		$this->includeJavaScript();
 
+		$this->setMarkerContent(
+			'image_path',
+			$this->getExtensionPath() . 'pi1/images/'
+		);
+
 		$this->renderContentHeading();
 
 		$this->retrieveSections();
@@ -95,17 +100,26 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	private function includeJavaScript() {
 		$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId]
 			= '<script type="text/javascript" ' .
-			'src="' . t3lib_extMgm::extRelPath($this->extKey) .
+			'src="' . $this->getExtensionPath() .
 			'pi1/tx_explanationbox_pi1.js">' .
 			'</script>';
 
 		if ($this->hasConfValueString('mooTools')) {
 			$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId . '_moo']
 				= '<script type="text/javascript" ' .
-				'src="' . t3lib_extMgm::extRelPath($this->extKey) .
+				'src="' . $this->getExtensionPath() .
 				$this->getConfValueString('mooTools') . '">' .
 				'</script>';
 		}
+	}
+
+	/**
+	 * Returns the extension's path for the front end.
+	 *
+	 * @return string the extension's path for the front end, will not be empty
+	 */
+	private function getExtensionPath() {
+		return t3lib_extMgm::extRelPath($this->extKey);
 	}
 
 	/**
