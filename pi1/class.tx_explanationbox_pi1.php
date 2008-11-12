@@ -31,32 +31,37 @@ require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_templatehelper.php
 /**
  * Content type 'Explanation box' for the 'explanationbox' extension.
  *
- * @author	Oliver Klee <typo3-coding@oliverklee.de>
+ * @author Oliver Klee <typo3-coding@oliverklee.de>
  *
- * @package	TYPO3
- * @subpackage	tx_explanationbox
+ * @package TYPO3
+ * @subpackage tx_explanationbox
  */
 class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	/**
 	 * @var string the table name of the sections table
 	 */
 	const TABLE_SECTIONS = 'tx_explanationbox_sections';
+
 	/**
 	 * @var string the table name of the columns table
 	 */
 	const TABLE_COLUMNS = 'tt_content';
+
 	/**
 	 * @var string same as class name
 	 */
 	public $prefixId = 'tx_explanationbox_pi1';
+
 	/**
 	 * @var string path to this script relative to the extension directory
 	 */
 	public $scriptRelPath = 'pi1/class.tx_explanationbox_pi1.php';
+
 	/**
 	 * @var string the extension key
 	 */
 	public $extKey = 'explanationbox';
+
 	/**
 	 * @var boolean whether this extension can be cashed
 	 */
@@ -225,7 +230,8 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	}
 
 	/**
-	 * Renders the sectionsand writes the result into the corresponding subpart.
+	 * Renders the sections and writes the result into the corresponding
+	 * subpart.
 	 */
 	private function renderSections() {
 		$result = '';
@@ -294,7 +300,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	 *
 	 * @param array the data of the column to render, must not be empty
 	 *
-	 * @return the rendered column, might be empty
+	 * @return string the rendered column, might be empty
 	 */
 	private function renderRawColumn(array $columnData) {
 		$configuration = array(
