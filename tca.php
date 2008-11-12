@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 $TCA['tx_explanationbox_sections'] = array(
 	'ctrl' => $TCA['tx_explanationbox_sections']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'title,columns'
+		'showRecordFieldList' => 'title,columns',
 	),
 	'feInterface' => $TCA['tx_explanationbox_sections']['feInterface'],
 	'columns' => array(
@@ -39,7 +39,7 @@ $TCA['tx_explanationbox_sections'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'title, columns')
+		'0' => array('showitem' => 'title, columns'),
 	),
 );
 ?>

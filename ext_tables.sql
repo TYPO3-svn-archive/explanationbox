@@ -2,7 +2,7 @@
 # Table structure for table 'tt_content'
 #
 CREATE TABLE tt_content (
-	tx_explanationbox_section_uid int(11) DEFAULT '0' NOT NULL
+	tx_explanationbox_section_uid int(11) DEFAULT '0' NOT NULL,
 	tx_explanationbox_sections tinytext,
 );
 
