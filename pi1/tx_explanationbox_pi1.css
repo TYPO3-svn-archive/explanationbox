@@ -11,7 +11,7 @@
 	border: 1px solid #eee;
 }
 
-.tx-explanationbox-pi1 .box-heading .active {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-active {
 	cursor: default;
 	color: #032359;
 }
@@ -35,7 +35,7 @@
 	padding: 2px;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser img.active {
+.tx-explanationbox-pi1 .box-heading .page-browser img.tx-explanationbox-pi1-active {
 	cursor: pointer;
 	visibility: visible;
 }
@@ -57,7 +57,7 @@
 	padding: 10px;
 }
 
-.tx-explanationbox-pi1 .box-content .active {
+.tx-explanationbox-pi1 .box-content .tx-explanationbox-pi1-active {
 	display: block;
 }
 

@@ -32,11 +32,11 @@
 function showTab(parentId, tabNumber, maxTab) {
 	activeExplanationSections[parentId] = tabNumber;
 
-	$(parentId).getElements(".tx-explanationbox-pi1-toggle").removeClass("active");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle").removeClass("tx-explanationbox-pi1-active");
 	$(parentId).getElements(".tx-explanationbox-pi1-toggle").addClass("tx-explanationbox-pi1-inactive");
 
 	$(parentId).getElements(".tx-explanationbox-pi1-toggle-" + tabNumber).removeClass("tx-explanationbox-pi1-inactive");
-	$(parentId).getElements(".tx-explanationbox-pi1-toggle-" + tabNumber).addClass("active");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle-" + tabNumber).addClass("tx-explanationbox-pi1-active");
 
 	var newNumber = document.createTextNode(tabNumber + 1);
 	var numberDisplay = $(parentId).getElement(".section-number");
@@ -44,16 +44,16 @@ function showTab(parentId, tabNumber, maxTab) {
 
 	if (tabNumber > 0) {
 		$(parentId).getElement(".arrow-left").removeClass("tx-explanationbox-pi1-inactive");
-		$(parentId).getElement(".arrow-left").addClass("active");
+		$(parentId).getElement(".arrow-left").addClass("tx-explanationbox-pi1-active");
 	} else {
-		$(parentId).getElement(".arrow-left").removeClass("active");
+		$(parentId).getElement(".arrow-left").removeClass("tx-explanationbox-pi1-active");
 		$(parentId).getElement(".arrow-left").addClass("tx-explanationbox-pi1-inactive");
 	}
 	if (tabNumber + 1 < maxTab) {
 		$(parentId).getElement(".arrow-right").removeClass("tx-explanationbox-pi1-inactive");
-		$(parentId).getElement(".arrow-right").addClass("active");
+		$(parentId).getElement(".arrow-right").addClass("tx-explanationbox-pi1-active");
 	} else {
-		$(parentId).getElement(".arrow-right").removeClass("active");
+		$(parentId).getElement(".arrow-right").removeClass("tx-explanationbox-pi1-active");
 		$(parentId).getElement(".arrow-right").addClass("tx-explanationbox-pi1-inactive");
 	}
 }

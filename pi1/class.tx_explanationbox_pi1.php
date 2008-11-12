@@ -181,7 +181,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$separator = $this->getSubpart('HEADING_SEPARATOR');
 
 		foreach ($this->sections as $key => $section) {
-			$class = ($key == 0) ? 'active' : 'tx-explanationbox-pi1-inactive';
+			$class = ($key == 0) ? 'tx-explanationbox-pi1-active' : 'tx-explanationbox-pi1-inactive';
 
 			$this->setMarker('class_heading', $class);
 			$this->setMarker('heading_number', $key);
@@ -190,7 +190,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		}
 
 		if (count($this->sections) > 1) {
-			$this->setMarker('class_rightarrow', 'active');
+			$this->setMarker('class_rightarrow', 'tx-explanationbox-pi1-active');
 		} else {
 			$this->setMarker('class_rightarrow', 'tx-explanationbox-pi1-inactive');
 		}
@@ -250,7 +250,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 					$renderedColumns = $this->renderTwoColumns($columns);
 					break;
 			}
-			$class = ($key == 0) ? 'active' : 'tx-explanationbox-pi1-inactive';
+			$class = ($key == 0) ? 'tx-explanationbox-pi1-active' : 'tx-explanationbox-pi1-inactive';
 
 			$this->setMarker('class_section', $class);
 			$this->setMarker('section_number', $key);
