@@ -32,11 +32,11 @@
 function showTab(parentId, tabNumber, maxTab) {
 	activeExplanationSections[parentId] = tabNumber;
 
-	$(parentId).getElements(".toggle").removeClass("active");
-	$(parentId).getElements(".toggle").addClass("inactive");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle").removeClass("active");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle").addClass("inactive");
 
-	$(parentId).getElements(".toggle-" + tabNumber).removeClass("inactive");
-	$(parentId).getElements(".toggle-" + tabNumber).addClass("active");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle-" + tabNumber).removeClass("inactive");
+	$(parentId).getElements(".tx-explanationbox-pi1-toggle-" + tabNumber).addClass("active");
 
 	var newNumber = document.createTextNode(tabNumber + 1);
 	var numberDisplay = $(parentId).getElement(".section-number");
