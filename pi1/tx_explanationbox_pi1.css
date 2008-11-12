@@ -16,7 +16,7 @@
 	color: #032359;
 }
 
-.tx-explanationbox-pi1 .box-heading .inactive {
+.tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-inactive {
 	cursor: pointer;
 	color: #5f5f5f;
 }
@@ -40,7 +40,7 @@
 	visibility: visible;
 }
 
-.tx-explanationbox-pi1 .box-heading .page-browser img.inactive {
+.tx-explanationbox-pi1 .box-heading .page-browser img.tx-explanationbox-pi1-inactive {
 	visibility: hidden;
 }
 
@@ -61,7 +61,7 @@
 	display: block;
 }
 
-.tx-explanationbox-pi1 .box-content .inactive {
+.tx-explanationbox-pi1 .box-content .tx-explanationbox-pi1-inactive {
 	display: none;
 }
 
