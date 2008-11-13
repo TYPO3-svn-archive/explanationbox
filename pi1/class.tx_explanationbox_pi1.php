@@ -134,7 +134,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->setMarker('content_id', $this->getContentUid());
 		$this->setMarker(
 			'content_heading',
-			htmlspecialchars($this->cObj->data['header'])
+			htmlspecialchars($this->cObj->data['subheader'])
 		);
 	}
 

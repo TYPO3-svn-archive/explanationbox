@@ -34,7 +34,7 @@ $TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['1'] = '255';
 
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
-	= 'CType, header, tx_explanationbox_sections';
+	= 'CType, subheader, tx_explanationbox_sections';
 
 $TCA['tx_explanationbox_sections'] = array(
 	'ctrl' => array(
