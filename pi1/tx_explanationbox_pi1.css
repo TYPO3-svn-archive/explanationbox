@@ -11,6 +11,10 @@
 	border: 1px solid #eee;
 }
 
+.tx-explanationbox-pi1-headings {
+	float: left;
+}
+
 .tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-active {
 	cursor: default;
 	color: #032359;
@@ -21,14 +25,8 @@
 	color: #5f5f5f;
 }
 
-.tx-explanationbox-pi1 .box-heading .section-navigation {
-	position: relative;
-}
-
 .tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser {
-	position: absolute;
-	right: 10px;
-	bottom: 0;
+	float: right;
 }
 
 .tx-explanationbox-pi1 .box-heading .tx-explanationbox-pi1-page-browser img {

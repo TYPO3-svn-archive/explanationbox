@@ -22,21 +22,24 @@
 	<div class="box-heading">
 		<h2>###CONTENT_HEADING###</h2>
 		<div class="section-navigation">
-			<!-- ###SECTION_HEADINGS### -->
-			<!-- ###SINGLE_HEADING### -->
-			<span class="tx-explanationbox-pi1-toggle heading ###CLASS_HEADING### tx-explanationbox-pi1-toggle-###HEADING_NUMBER###" onclick="showTab('box-###CONTENT_ID###', ###HEADING_NUMBER###, ###NUMBER_OF_SECTIONS###);">
-				###HEADING###
-			</span>
-			<!-- ###SINGLE_HEADING### -->
-			<!-- ###HEADING_SEPARATOR### -->
-				<img src="###IMAGE_PATH###pipe.gif" alt="|" />
-			<!-- ###HEADING_SEPARATOR### -->
-			<!-- ###SECTION_HEADINGS### -->
+			<div class="tx-explanationbox-pi1-headings">
+				<!-- ###SECTION_HEADINGS### -->
+				<!-- ###SINGLE_HEADING### -->
+				<span class="tx-explanationbox-pi1-toggle heading ###CLASS_HEADING### tx-explanationbox-pi1-toggle-###HEADING_NUMBER###" onclick="showTab('box-###CONTENT_ID###', ###HEADING_NUMBER###, ###NUMBER_OF_SECTIONS###);">
+					###HEADING###
+				</span>
+				<!-- ###SINGLE_HEADING### -->
+				<!-- ###HEADING_SEPARATOR### -->
+					<img src="###IMAGE_PATH###pipe.gif" alt="|" />
+				<!-- ###HEADING_SEPARATOR### -->
+				<!-- ###SECTION_HEADINGS### -->
+			</div>
 			<div class="tx-explanationbox-pi1-page-browser">
 				<img src="###IMAGE_PATH###arrow_left.gif" alt="&lt;" class="arrow-left tx-explanationbox-pi1-inactive" onclick="tabLeft('box-###CONTENT_ID###', ###NUMBER_OF_SECTIONS###);" />
 				<span class="section-number">1</span>/###NUMBER_OF_SECTIONS###
 				<img src="###IMAGE_PATH###arrow_right.gif" alt="&gt;" class="arrow-right ###CLASS_RIGHTARROW###" onclick="tabRight('box-###CONTENT_ID###', ###NUMBER_OF_SECTIONS###);" />
 			</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 	<div class="box-content">
