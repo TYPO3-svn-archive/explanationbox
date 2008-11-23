@@ -27,6 +27,7 @@ $tempColumns = array(
 t3lib_div::loadTCA('tt_content');
 t3lib_extMgm::addTCAcolumns('tt_content', $tempColumns, 1);
 t3lib_extMgm::allowTableOnStandardPages('tx_explanationbox_sections');
+t3lib_extMgm::allowTableOnStandardPages('tx_explanationbox_columns');
 
 // Creates a new colPos value 255 for all inline content elements.
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
@@ -51,6 +52,22 @@ $TCA['tx_explanationbox_sections'] = array(
 			'icon_tx_explanationbox_sections.gif',
 	),
 );
+$TCA['tx_explanationbox_columns'] = array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:explanationbox/locallang_db.xml:tx_explanationbox_columns',
+		'label' => 'uid',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'sortby' => 'sorting',
+		'delete' => 'deleted',
+		'enablecolumns' => array(),
+		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
+		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) .
+			'icon_tx_explanationbox_columns.gif',
+	),
+);
+
 
 t3lib_extMgm::addPlugin(
 	array(

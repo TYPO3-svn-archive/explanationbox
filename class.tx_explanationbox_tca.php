@@ -38,7 +38,7 @@ class tx_explanationbox_tca {
 		// Removes all place relations of the current event.
 		$GLOBALS['TYPO3_DB']->sql_query(
 			'UPDATE tt_content SET colPos = 255 ' .
-				'WHERE tx_explanationbox_section_uid > 0;'
+				'WHERE tx_explanationbox_column_uid > 0;'
 		);
 	}
 }

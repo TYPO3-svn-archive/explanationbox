@@ -45,7 +45,12 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	/**
 	 * @var string the table name of the columns table
 	 */
-	const TABLE_COLUMNS = 'tt_content';
+	const TABLE_COLUMNS = 'tx_explanationbox_columns';
+
+	/**
+	 * @var string the table name of the content table
+	 */
+	const TABLE_CONTENT = 'tt_content';
 
 	/**
 	 * @var string same as class name
@@ -85,7 +90,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$this->getTemplateCode();
 		$this->includeJavaScript();
 
-		$this->setMarkerContent(
+		$this->setMarker(
 			'image_path',
 			$this->getExtensionPath() . 'pi1/images/'
 		);
@@ -213,8 +218,37 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'uid',
 			self::TABLE_COLUMNS,
-			'tx_explanationbox_section_uid  = ' . $sectionUid .
+			'section_uid  = ' . $sectionUid .
 				tx_oelib_db::enableFields(self::TABLE_COLUMNS),
+			'',
+			'sorting'
+		);
+		if (!$dbResult) {
+			throw new Exception(DATABASE_QUERY_ERROR);
+		}
+
+		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Retrieves the columns related to the section with the UID $sectionUid.
+	 *
+	 * @param integer the UID of an existing section, must be > 0
+	 *
+	 * @return array all content elements in that column, may be empty
+	 */
+	private function retrieveContentInColumn($columnUid) {
+		$result = array();
+
+		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'uid',
+			self::TABLE_CONTENT,
+			'tx_explanationbox_column_uid  = ' . $columnUid .
+				tx_oelib_db::enableFields(self::TABLE_CONTENT),
 			'',
 			'sorting'
 		);
@@ -303,13 +337,22 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	 * @return string the rendered column, might be empty
 	 */
 	private function renderRawColumn(array $columnData) {
-		$configuration = array(
-			'tables' => self::TABLE_COLUMNS,
-			'source' => $columnData['uid'],
-			'dontCheckPid' => 1,
-		);
+		$result = '';
 
-		return $this->cObj->RECORDS($configuration);
+		$contents = $this->retrieveContentInColumn($columnData['uid']);
+
+		foreach ($contents as $content) {
+			$configuration = array(
+				'tables' => self::TABLE_CONTENT,
+				'source' => $content['uid'],
+				'dontCheckPid' => 1,
+			);
+
+			$result .= $this->cObj->RECORDS($configuration);
+			$result .= chr(10);
+		}
+
+		return $result;
 	}
 }
 
