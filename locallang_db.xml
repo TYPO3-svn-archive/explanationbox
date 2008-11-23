@@ -37,8 +37,8 @@
 			<label index="tx_explanationbox_sections.title" type="integer">192455458</label>
 			<label index="tx_explanationbox_sections.columns" type="integer">23640109</label>
 			<label index="tx_explanationbox_columns" type="integer">23640109</label>
-			<label index="tx_explanationbox_columns.uid" type="integer">1234</label>
-			<label index="tx_explanationbox_columns.content_elements" type="integer">23640109</label>
+			<label index="tx_explanationbox_columns.uid" type="integer">243081769</label>
+			<label index="tx_explanationbox_columns.content_elements" type="integer">221138583</label>
 			<label index="tt_content.CType_pi1" type="integer">111816692</label>
 			<label index="tt_content.colPos.255" type="integer">156432348</label>
 		</languageKey>
