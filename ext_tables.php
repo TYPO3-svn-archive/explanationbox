@@ -6,6 +6,7 @@ if (!defined('TYPO3_MODE')) {
 $tempColumns = array(
 	'tx_explanationbox_sections' => array(
 		'exclude' => 0,
+		'l10n_mode' => 'exclude',
 		'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tt_content.tx_explanationbox_sections',
 		'config' => array (
 			'type' => 'inline',
@@ -35,7 +36,7 @@ $TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['1'] = '255';
 
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
-	= 'CType, subheader, tx_explanationbox_sections';
+	= 'CType, header, subheader, tx_explanationbox_sections';
 
 $TCA['tx_explanationbox_sections'] = array(
 	'ctrl' => array(
@@ -44,6 +45,11 @@ $TCA['tx_explanationbox_sections'] = array(
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
+		'versioningWS' => TRUE,
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l18n_parent',
+		'transOrigDiffSourceField' => 'l18n_diffsource',
 		'sortby' => 'sorting',
 		'delete' => 'deleted',
 		'enablecolumns' => array(),
@@ -59,6 +65,8 @@ $TCA['tx_explanationbox_columns'] = array(
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
+		'versioningWS' => TRUE,
+		'origUid' => 't3_origuid',
 		'sortby' => 'sorting',
 		'delete' => 'deleted',
 		'enablecolumns' => array(),
