@@ -1,3 +1,7 @@
+Version 0.3.0
+- allow localization and workspaces for content elements and sections (but not tabs)
+- add a conflict with date2cal
+
 Version 0.2.0
 - allow multiple content elements per column
 
