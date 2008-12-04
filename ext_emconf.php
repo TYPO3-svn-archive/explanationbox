@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => 'typo3-coding@oliverklee.de',
 	'shy' => '',
 	'dependencies' => 'cms,oelib',
-	'conflicts' => 'icebox',
+	'conflicts' => 'date2cal,icebox',
 	'priority' => '',
 	'module' => '',
 	'state' => 'alpha',
@@ -38,6 +38,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'oelib' => '0.4.3-',
 		),
 		'conflicts' => array(
+			'date2cal' => '',
 			'icebox' => '',
 		),
 		'suggests' => array(
