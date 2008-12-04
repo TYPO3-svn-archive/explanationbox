@@ -149,7 +149,8 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 	 * @return integer UID of the current content element, will be > 0
 	 */
 	private function getContentUid() {
-		return $this->cObj->data['uid'];
+		return ($this->cObj->data['l18n_parent'] > 0 )
+			? $this->cObj->data['l18n_parent'] : $this->cObj->data['uid'];
 	}
 
 
@@ -173,6 +174,19 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		}
 
 		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
+			$GLOBALS['TSFE']->sys_page->versionOL(self::TABLE_SECTIONS, $row);
+			$GLOBALS['TSFE']->sys_page->fixVersioningPid(
+				self::TABLE_SECTIONS, $row
+			);
+			if ($GLOBALS['TSFE']->sys_language_content > 0) {
+				$row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
+					self::TABLE_SECTIONS,
+					$row,
+					$GLOBALS['TSFE']->sys_language_content,
+					$GLOBALS['TSFE']->sys_language_contentOL
+				);
+			}
+
 			$this->sections[] = $row;
 		}
 	}
@@ -245,7 +259,7 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$result = array();
 
 		$dbResult = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-			'uid',
+			'*',
 			self::TABLE_CONTENT,
 			'tx_explanationbox_column_uid  = ' . $columnUid .
 				tx_oelib_db::enableFields(self::TABLE_CONTENT),
@@ -257,6 +271,19 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		}
 
 		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($dbResult)) {
+			$GLOBALS['TSFE']->sys_page->versionOL(self::TABLE_CONTENT, $row);
+			$GLOBALS['TSFE']->sys_page->fixVersioningPid(
+				self::TABLE_CONTENT, $row
+			);
+			if ($GLOBALS['TSFE']->sys_language_content > 0) {
+				$row = $GLOBALS['TSFE']->sys_page->getRecordOverlay(
+					self::TABLE_CONTENT,
+					$row,
+					$GLOBALS['TSFE']->sys_language_content,
+					$GLOBALS['TSFE']->sys_language_contentOL
+				);
+			}
+
 			$result[] = $row;
 		}
 
@@ -342,9 +369,12 @@ class tx_explanationbox_pi1 extends tx_oelib_templatehelper {
 		$contents = $this->retrieveContentInColumn($columnData['uid']);
 
 		foreach ($contents as $content) {
+			$uid = isset($content['_LOCALIZED_UID'])
+				? $content['_LOCALIZED_UID'] : $content['uid'];
+
 			$configuration = array(
 				'tables' => self::TABLE_CONTENT,
-				'source' => $content['uid'],
+				'source' => $uid,
 				'dontCheckPid' => 1,
 			);
 
