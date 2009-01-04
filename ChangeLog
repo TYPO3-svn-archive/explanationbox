@@ -1,4 +1,5 @@
 Version 0.4.0
+- The autoloader should include the constants
 - update copyrights to 2009
 - use the oelib autoloader
 
