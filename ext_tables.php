@@ -6,7 +6,6 @@ if (!defined('TYPO3_MODE')) {
 $tempColumns = array(
 	'tx_explanationbox_sections' => array(
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',
 		'label' => 'LLL:EXT:explanationbox/locallang_db.xml:tt_content.tx_explanationbox_sections',
 		'config' => array (
 			'type' => 'inline',
@@ -36,7 +35,7 @@ $TCA['tt_content']['columns']['colPos']['config']['items']['255']['0']
 $TCA['tt_content']['columns']['colPos']['config']['items']['255']['1'] = '255';
 
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem']
-	= 'CType, header, subheader, tx_explanationbox_sections';
+	= 'CType, sys_language_uid, header, subheader, tx_explanationbox_sections';
 
 $TCA['tx_explanationbox_sections'] = array(
 	'ctrl' => array(
