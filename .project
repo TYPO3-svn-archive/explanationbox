@@ -3,6 +3,7 @@
 	<name>explanationbox</name>
 	<comment></comment>
 	<projects>
+		<project>oelib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
